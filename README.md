@@ -1,4 +1,4 @@
-# Get Random number 🔥
+# Sonos Wrapper 
 
 Library to get information of every product sell by sonos
 
