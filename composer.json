@@ -1,0 +1,31 @@
+{
+    "name": "elyes/sonos-wrapper",
+    "description": "Library to get information of every product sell by sonos",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Elyes\\SonosWrapper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elyesv",
+            "email": "elyesvoisin52@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "symfony/http-client": "^6.3",
+        "symfony/dom-crawler": "^6.3",
+        "symfony/css-selector": "^6.3"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^10.2"
+    },
+    "scripts": {
+        "phpstan": "@php vendor/bin/phpstan analyze src --level=max",
+        "test": "@php vendor/bin/phpunit tests"
+    }
+}
