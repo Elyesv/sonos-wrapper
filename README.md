@@ -33,4 +33,23 @@ return an array of categories
 
 ## Get all products of category
 
+Retrieve all products of a category
+
+Put a category name as parameter, you can get the category name from the previous function
+
+```php
+ $api = new \Elyes\SonosWrapper\Api()->getProductsByCategory(String $category);
+```
+return an array of products
+
 ## Get product information
+
+Retrieve all information of a product
+
+Put a product name as parameter, you can get the product name from the previous function
+
+```php
+ $api = new \Elyes\SonosWrapper\Api()->getProduct(String $product);
+```
+
+return an array of product information

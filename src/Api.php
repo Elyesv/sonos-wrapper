@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Elyes\SonosWrapper;
 
+use PhpParser\Node\Expr\Array_;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Api
@@ -55,4 +56,26 @@ class Api
         return $products;
     }
 
+    public function getProduct(String $product): array
+    {
+        $client = HttpClient::create();
+        $response = $client->request(
+            'GET',
+            'https://www.sonos.com/_next/data/Umxp-bVpfNOwryZCCeU88/fr-fr/internal/commerce/products/' . $product . '.json'
+        );
+
+        $content = $response->toArray();
+        return [
+            'productId' => $content['pageProps']['product']['id'],
+            'price' => $content['pageProps']['product']['price'],
+            'stockLevel' => $content['pageProps']['product']['inventory']['stockLevel'],
+            'name' => $content['pageProps']['product']['content'][0]['name'],
+            'slug' => $content['pageProps']['product']['content'][0]['slug']['current'],
+            'descriptor' => $content['pageProps']['product']['content'][0]['descriptor'],
+            'overview' => $content['pageProps']['product']['content'][0]['overview'],
+            'media' => $content['pageProps']['product']['content'][0]['media'],
+            'color' => $content['pageProps']['product']['variationAttributes'][0]['values'],
+
+        ];
+    }
 }

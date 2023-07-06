@@ -16,4 +16,10 @@ class ApiTest extends TestCase{
         $api = new Api();
         $this->assertIsArray($api->getProductsByCategory("wireless-speakers"));
     }
+
+    public function getProduct(): void
+    {
+        $api = new Api();
+        $this->assertIsArray($api->getProduct("era-100"));
+    }
 }
