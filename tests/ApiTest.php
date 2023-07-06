@@ -5,9 +5,15 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase{
 
-    public function testGetCategories()
+    public function testGetCategories(): void
     {
         $api = new Api();
         $this->assertIsArray($api->getCategories());
+    }
+
+    public function getProductsByCategory(): void
+    {
+        $api = new Api();
+        $this->assertIsArray($api->getProductsByCategory("wireless-speakers"));
     }
 }

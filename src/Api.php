@@ -33,4 +33,26 @@ class Api
         return $categories;
     }
 
+    public function getProductsByCategory(String $category): array
+    {
+        $client = HttpClient::create();
+        $response = $client->request(
+            'GET',
+            'https://www.sonos.com/_next/data/Umxp-bVpfNOwryZCCeU88/fr-fr/internal/commerce/categories/' . $category . '.json'
+        );
+
+        $content = $response->toArray();
+        $products = [];
+
+        foreach ($content['pageProps']['category']['products']['hits'] as $value){
+                $products[] = array(
+                    'productId' => $value['productId'],
+                    'name' => $value['content'][0]['name'],
+                    'slug' => $value['content'][0]['slug']['current'],
+                );
+            }
+
+        return $products;
+    }
+
 }
